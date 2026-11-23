@@ -16,17 +16,48 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "mypy",
-    "ruff",
+    "pytest>=9.2.0",
+    "mypy>=2.4.1",
+    "ruff>=0.17.6",
+    "pandas-stubs>=3.1.0"
+]
+
+[tool.pytest]
+testpaths = [
+    "tests",
 ]
 
 [tool.mypy]
-files = ["app"]
-warn_unused_configs = true
-check_untyped_defs = true
+strict = true
+files = [
+    "app",
+]
 
 [tool.ruff]
+include = [
+    "app/**/*.py",
+    "test/**/*.py",
+]
+
 line-length = 120
 
+[tool.ruff.lint.per-file-ignores]
+"test/**/*.py" = ["D103", "D102"]
+
 [tool.ruff.lint]
-select = ["E", "F", "I"]
+select = [
+    "E",  # pycodestyle errors
+    "F",  # Pyflakes
+    "I",  # Import sorting
+    "D",  # Docstring conventions
+    "W",  # pycodestyle warnings
+]
+
+ignore = [
+    "D105", # Magic methods do not need docstrings.
+    "D107", # __init__ methods do not need docstrings.
+    "D211", # Incorrect blank line before class
+    "D213", # Multi line summary second line
+    "D203", # Ignore one line between class and docstring
+    "D204", # Ignore one line between docstring and fields
+]
