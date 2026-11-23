@@ -10,4 +10,4 @@ def get_data(request: Request) -> DataFrame:
     """Retrieve the data stored in the FastAPI application's state."""
     return cast(DataFrame, request.app.state.dataset)
 
-DataDependency = Annotated[DataFrame, Depends(get_data)]
+DatasetDependency = Annotated[DataFrame, Depends(get_data)]
