@@ -2,37 +2,26 @@
 **Author**: Petter Gustafsson (pg22jw)   
 **Course**: Advanced Information Visualization and Applications (4DT912)
 
-
-Task 2
-* Data and domain: Describe the dataset and its domain context. What information,
-patterns, or insights might users seek?
-* Analytical goal: Define the overall purpose of your visual analytics interface. What
-should users be able to understand or discover by exploring the data? Identify specific,
-domain-relevant analytical tasks that users should be able to perform. Explain how these
-tasks contribute to the overall analytical goal.
-* Design implications: Briefly discuss how these tasks could inform the choice of
-projection visualization, supporting visualizations, and interactions.
-
 ## Dataset
+
+### Introduction
 
 The [**Students' Dropout and Academic Success**](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success) dataset originates from the educational domain and provides insights into students' academic performance, dropout and graduation outcomes, demographics, and educational and socio-economic backgrounds. The dataset was supported by the SATDAP – Capacitação da Administração Pública program and is available through the [**UCI Machine Learning Repository**](https://archive.ics.uci.edu/), where it was originally used to develop and evaluate a classification model for predicting student dropout and academic success.
 
 The dataset comprises more than 4,000 students, each described by 37 attributes, with no missing values. It follows a tabular structure in which each row represents an individual student and each column represents a student attribute. These attributes cover various aspects of students' backgrounds and academic circumstances, including marital status, course enrolment, attendance-related information, educational qualifications, nationality, parental education levels, and academic grades. The attributes encompass several data types, including numerical, nominal, ordinal, and binary variables.
 
+### Potential points of exploration
+
+Considering the available student attributes, users may be interested in exploring patterns and relationships between academic outcomes and various student characteristics, such as parental educational attainment, admission grades, and scholarship status. For instance, users might discover that students who graduate tend to have higher admission grades, come from families with higher parental educational attainment, and are more likely to receive scholarships than students who drop out.
+
+Furthermore, users may be interested in investigating the extent to which different attributes are associated with academic outcomes. For example, admission grades might exhibit a strong association with graduation, whereas parental educational attainment might show a weaker relationship. Such insights could help users identify which student attributes are most strongly associated with different academic outcomes.
+
+### Concerns
+
 Some concerns include the semantics of certain attributes, including inflation and umemployment rate, and GDP. While these attributes are generally well-defined and widely understood concepts, their meaning in the context of attributes describing individual students is ambiguous. For instance, it is unclear what it means for a student to have an inflation rate of 2.8%. Consequently, any analyses involving dimensionality reduction methods that include these attributes should be interpreted with caution, as their relevance and meaning in the context of individual students are questionable. Excluding these attributes from such analyses should therefore be considered.
-
-### Data and domain part of Task 2
-
-* The dataset describes students' academic performance, demographics, educational, and socio-economic backgorunds etc.
-* It has a target feature stating describing whether a student dropped out or graduated
-* Appropriate information, patterns, or insights that users might seek could therefore be...
-    * Connections between dropout/graduation rates and student attributes, such as academic performance or socio-economic background
-    * Connections between admission grades and student attributes, such as parental educational levels
 
 
 ### Dataset characteristics
-
-This section outlines some dataset characteristics that should be considered during future preprocessing.
 
 Figure 1 in *Appendix* presents the correlation matrix of the numerical attributes. The matrix reveals generally weak correlations between several attributes, whereas the curricular unit attributes tend to exhibit strong correlations with one another. For instance, the number of credited curricular units in the first semester is highly correlated with that of the second semester (0.94). This is likely due to the two features having similar value distributions across semesters, as illustrated by their histograms in Figure 2 in *Appendix*. Similar patterns can be observed among the attributes describing approved and enrolled curricular unit credits across the two semesters.
 
@@ -47,9 +36,15 @@ Furthermore, the dataset contains many categorical features that can be used to 
 Although some numerical attributes may be excluded during preprocessing, as discussed in the previous section, the dataset still offers considerable opportunities to incorporate categorical features. Techniques such as one-hot encoding can transform these features into numerical representations, allowing them to be included in the dimensionality reduction process and potentially enriching the resulting projections.
 
 
-## Analytical goal
+## Overall analtical goal
 
-* The overall purpose of my visualization is to allow users to explore/discover patterns of academic success accross different student attributes. 
+The overall analytical goal of the visual analytics interface is to enable users to discover patterns and potential associations between academic outcomes and multiple student attributes within a latent 2D or 3D space. This includes identifying distinct student profiles based on their positions and distributions in the latent space, as well as investigating how these profiles differ across various attributes, such as academic grades and parental educational attainment.
+
+For instance, users might discover that students form distinct groups based on their academic outcomes, such as dropout and graduation status. Further examination of these profiles might reveal significant differences in admission grades between the groups. Such discoveries could help users identify potential associations between student characteristics and academic outcomes, as well as understand which attributes are most strongly associated with different outcomes.
+
+Furthermore, users should be able to identify potential outliers that deviate from the identified student profiles in the latent space. This would allow users to inspect individual students and compare their characteristics with those of other student profiles across multiple attributes. For example, an outlier might represent a student with considerably higher admission grades than those typically observed within other profiles, or a student whose parents have particularly high levels of educational attainment.
+
+These analytical tasks contribute to the overall analytical goal in several ways. Identifying student profiles based on categorical attributes, such as dropout and graduation status, facilitates pattern exploration by allowing users to visually identify potential groupings and distributions in the latent space. Subsequently, comparing these profiles across different student attributes enables users to investigate potential associations between academic outcomes and other student characteristics. Together, these capabilities support an exploratory approach to understanding the relationships between student characteristics and academic performance.
 
 
 ## Design implications
