@@ -14,7 +14,7 @@ def hello() -> dict[str, str]:
     return {"message": "Hello from FastAPI"}
 
 
-@router.get("/hello-dataset")
+@router.get("/dataset")
 def hello_dataset(
     data: DatasetDependency
 ) -> dict[str, Any]:
