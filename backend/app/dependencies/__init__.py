@@ -1,5 +1,5 @@
 """Package for FastAPI dependencies."""
 
-from .data_deps import DataDependency
+from .data_deps import DatasetDependency
 
-__all__ = ["DataDependency"]
+__all__ = ["DatasetDependency"]

@@ -1,11 +1,10 @@
 """Hello route for the FastAPI application."""
 
 from typing import Any
-from fastapi import Request
 
 from fastapi import APIRouter
 
-from app.dependencies import DataDependency
+from app.dependencies import DatasetDependency
 
 router = APIRouter(prefix="/api/hello", tags=["hello"])
 
@@ -17,7 +16,7 @@ def hello() -> dict[str, str]:
 
 @router.get("/hello-dataset")
 def hello_dataset(
-    data: DataDependency
+    data: DatasetDependency
 ) -> dict[str, Any]:
     """Endpoint returning a hello message from the dataset that is currently loaded into the application."""
     return {
