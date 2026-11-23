@@ -11,6 +11,7 @@ from app.router import hello
 
 logger = getLogger("uvicorn.error")
 
+# Test comment
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """Manage the lifespan of the FastAPI application."""
