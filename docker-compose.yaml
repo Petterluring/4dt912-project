@@ -1,0 +1,52 @@
+
+
+services:
+  service:
+    build: ./backend
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - |
+        import urllib.request
+        import sys
+        try:
+          urllib.request.urlopen('http://localhost:8000/api/health', timeout=5)
+          sys.exit(0)
+        except Exception as e:
+          print(f"Health check failed: {e}")
+          sys.exit(1)
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    ports:
+      - "${BACKEND_PORT}:8000"
+    volumes:
+      - ./data:/data:ro
+    command: ["python", "-m", "app.main"]
+    
+    
+  app:
+    build: ./frontend
+    depends_on:
+      service:
+        condition: service_healthy
+    ports:
+      - "${FRONTEND_PORT}:5173"
+    command: ["serve", "-s", "dist", "-l", "5173"]
+
+
+  # nginx:
+  #   image: nginx:alpine
+  #   ports:
+  #     - "${NGINX_PORT}:80"
+  #   environment:
+  #     - BACKEND_PORT=${BACKEND_PORT}
+  #     - FRONTEND_PORT=${FRONTEND_PORT}
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/templates/default.conf.template:ro
+  #   depends_on:
+  #     - app
+  #     - service

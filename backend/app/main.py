@@ -7,11 +7,10 @@ from fastapi import FastAPI
 
 from app.paths.constants import DATA_DIR
 from app.paths.loading import load_csv_file
-from app.router import hello
+from app.router import health, hello
 
 logger = getLogger("uvicorn.error")
 
-# Test comment
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """Manage the lifespan of the FastAPI application."""
@@ -37,6 +36,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 
 app = FastAPI(lifespan=lifespan)
 app.include_router(hello.router)
+app.include_router(health.router)
 
 @app.get("/")
 def read_root() -> dict[str, str]:
