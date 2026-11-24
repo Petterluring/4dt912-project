@@ -9,3 +9,76 @@ body {
 h1 {
   margin: 0;
 }
+
+.hello-api {
+  width: min(24rem, calc(100vw - 2rem));
+}
+
+.hello-api h2 {
+  margin: 1.5rem 0 0.75rem;
+  color: #334155;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.message-box {
+  box-sizing: border-box;
+  min-height: 5rem;
+  padding: 1rem;
+  overflow-wrap: anywhere;
+  color: #1e293b;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  box-shadow: inset 0 1px 2px rgb(15 23 42 / 5%);
+}
+
+.hello-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.hello-actions button {
+  padding: 0.65rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 150ms, border-color 150ms;
+}
+
+.hello-actions button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+.send-button {
+  color: #fff;
+  background: #2563eb;
+}
+
+.send-button:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.send-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.hello-actions .clear-button {
+  color: #334155;
+  background: #fff;
+  border-color: #cbd5e1;
+}
+
+.hello-actions .clear-button:hover {
+  background: #f1f5f9;
+}
+
+.request-error {
+  color: #b91c1c;
+}

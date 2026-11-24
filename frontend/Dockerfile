@@ -11,15 +11,10 @@ RUN npm run build
 
 
 # Runtime stage
-FROM node:24-alpine
+FROM nginx:alpine
 
-WORKDIR /app
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 5173
-
-COPY --from=builder /app/dist ./dist
-
-RUN npm install -g serve
-
-CMD ["serve", "-s", "dist", "-l", "5173"]
 
