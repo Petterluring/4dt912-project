@@ -1,0 +1,32 @@
+binary:
+- Displaced
+- Educational special needs
+- Debtor
+- Tuition fees up to date
+- Gender
+- Scholarship holder
+- International
+nominal:
+- Marital Status
+- Application mode
+- Course
+- Daytime/evening attendance
+- Previous qualification
+- Nationality
+- Mother's qualification
+- Father's qualification
+- Mother's occupation
+- Father's occupation
+- Graduation status
+numerical:
+- Admission grade
+- Age at enrollment
+- Previous qualification (grade)
+- Curricular units (credited)
+- Curricular units (enrolled)
+- Curricular units (evaluations)
+- Curricular units (approved)
+- Curricular units (grade)
+- Curricular units (without evaluations)
+ordinal:
+- Application order
